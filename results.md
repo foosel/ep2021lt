@@ -16,20 +16,6 @@ perf_counter
         ticks:          10000000.0
 ```
 
-### CPython 3.8.2, Ubuntu 20.04 @ Windows 10 64bit WSL2
-
-```
-$ python src/clockprops.py
-monotonic
-        implementation: clock_gettime(CLOCK_MONOTONIC)
-        resolution:     1e-09
-        ticks:          999999999.9999999
-perf_counter
-        implementation: clock_gettime(CLOCK_MONOTONIC)
-        resolution:     1e-09
-        ticks:          999999999.9999999
-```
-
 ### CPython 3.8.2, Ubuntu 20.04
 
 ```
@@ -58,16 +44,6 @@ monotonic: 6811
 perf_counter: 1000000000
 ```
 
-### CPython 3.8.2, Ubuntu 20.04 @ Windows 10 64bit WSL2
-
-```
-$ python src/timetest.py
-[...]
-Changes:
-monotonic: 1000000000
-perf_counter: 1000000000
-```
-
 ### CPython 3.8.2, Ubuntu 20.04
 
 ```
@@ -87,15 +63,6 @@ $ python -m timeit -s "import time" "time.monotonic()"
 5000000 loops, best of 5: 54.2 nsec per loop
 $ python -m timeit -s "import time" "time.perf_counter()"
 5000000 loops, best of 5: 84.1 nsec per loop
-```
-
-### CPython 3.8.2, Ubuntu 20.04 @ Windows 10 64bit WSL2
-
-```
-$ python3 -m timeit -s "import time" "time.monotonic()"
-5000000 loops, best of 5: 87.2 nsec per loop
-$ python3 -m timeit -s "import time" "time.perf_counter()"
-2000000 loops, best of 5: 90.3 nsec per loop
 ```
 
 ### CPython 3.8.2, Ubuntu 20.04
