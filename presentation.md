@@ -35,6 +35,8 @@ https://docs.python.org/3/library/time.html
 
 Implementation: `GetTickCount64`/`QueryPerformanceCounter` (Windows) vs `clock_gettime(CLOCK_MONOTONIC)` (Linux)
 
+Monotonic: `true`
+
 ---
 
 # Let's have a closer look at the resolution

@@ -7,10 +7,12 @@
 ```
 $ python src/clockprops.py
 monotonic
+        monotonic:      True
         implementation: GetTickCount64()
         resolution:     0.015625
         ticks:          64.0
 perf_counter
+        monotonic:      True
         implementation: QueryPerformanceCounter()
         resolution:     1e-07
         ticks:          10000000.0
@@ -21,10 +23,12 @@ perf_counter
 ```
 $ python src/clockprops.py
 monotonic
+        monotonic:      True
         implementation: clock_gettime(CLOCK_MONOTONIC)
         resolution:     1e-09
         ticks:          999999999.9999999
 perf_counter
+        monotonic:      True
         implementation: clock_gettime(CLOCK_MONOTONIC)
         resolution:     1e-09
         ticks:          999999999.9999999
