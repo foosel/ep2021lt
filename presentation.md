@@ -6,7 +6,7 @@ marp: true
 
 <!-- class: invert -->
 
-# time.monotonic vs time.perf_counter: What's the difference?
+# `time.monotonic` vs `time.perf_counter`: What's the difference?
 
 Gina Häußge // @foosel
 
@@ -21,7 +21,7 @@ EuroPython 2021
 | `time.monotonic`    | 64 Hz 👀 | 1,000,000,000 Hz | 1,000,000,000 Hz |
 | `time.perf_counter` | 10,000,000 Hz | 1,000,000,000 Hz | 1,000,000,000 Hz |
 
-Implementation: `GetTickCount64`/`QueryPerformanceCounter` (Windows) vs `get_clock("CLOCK_MONOTONIC")` (Linux)
+Implementation: `GetTickCount64`/`QueryPerformanceCounter` (Windows) vs `clock_gettime(CLOCK_MONOTONIC)` (Linux)
 
 ---
 
