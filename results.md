@@ -104,6 +104,15 @@ $ python -m timeit -s "import time" "time.perf_counter()"
 5000000 loops, best of 5: 73.3 nsec per loop
 ```
 
+### CPython 3.9.5, MacOS (kindly provided by Jubaleth)
+
+```
+$ python3 -m timeit -s "import time" "time.monotonic()"
+5000000 loops, best of 5: 98.8 nsec per loop
+$ python3 -m timeit -s "import time" "time.perf_counter()"
+5000000 loops, best of 5: 94.3 nsec per loop
+```
+
 ## Further reading
 
   * [https://www.webucator.com/article/python-clocks-explained/](https://www.webucator.com/article/python-clocks-explained/)
