@@ -34,6 +34,22 @@ perf_counter
         ticks:          999999999.9999999
 ```
 
+### MacOS (kindly provided by Mike)
+
+```
+$ python src/clockprops.py
+monotonic
+        monotonic:      True
+        implementation: mach_absolute_time()
+        resolution:     1e-09
+        ticks:          999999999.9999999
+perf_counter
+        monotonic:      True
+        implementation: mach_absolute_time()
+        resolution:     1e-09
+        ticks:          999999999.9999999
+```
+
 ## Resolution
 
 Loop with 1,000,000,000 cycles, number of changes of returned value.
@@ -49,6 +65,16 @@ perf_counter: 1000000000
 ```
 
 ### CPython 3.8.2, Ubuntu 20.04
+
+```
+$ python src/timetest.py
+[...]
+Changes:
+monotonic: 1000000000
+perf_counter: 1000000000
+```
+
+### MacOS (kindly provided by Mike)
 
 ```
 $ python src/timetest.py

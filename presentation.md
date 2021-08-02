@@ -28,12 +28,12 @@ https://docs.python.org/3/library/time.html
 
 # What does `time.get_clock_info` say?
 
-|                  | Windows | Linux |
-| ---------------- | -------- | ----- |
-| `time.monotonic`    | 64 Hz 👀 | 1,000,000,000 Hz |
-| `time.perf_counter` | 10,000,000 Hz| 1,000,000,000 Hz |
+|                  | Windows | Linux | MacOS |
+| ---------------- | -------- | ----- | ----- |
+| `time.monotonic`    | 64 Hz 👀 | 1,000,000,000 Hz | 1,000,000,000 Hz |
+| `time.perf_counter` | 10,000,000 Hz | 1,000,000,000 Hz | 1,000,000,000 Hz |
 
-Implementation: `GetTickCount64`/`QueryPerformanceCounter` (Windows) vs `clock_gettime(CLOCK_MONOTONIC)` (Linux)
+Implementation: `GetTickCount64`/`QueryPerformanceCounter` (Windows) vs `clock_gettime(CLOCK_MONOTONIC)` (Linux) vs `mach_absolute_time` (MacOS)
 
 Monotonic: `true`
 
@@ -43,10 +43,10 @@ Monotonic: `true`
 
 Test: Loop with 1,000,000,000 cycles, number of changes of returned value.
 
-|                     | Windows       | Linux         |
-| ------------------- | ------------- | ------------- |
-| `time.monotonic`    | 6811 👀       | 1,000,000,000 |
-| `time.perf_counter` | 1,000,000,000 | 1,000,000,000 |
+|                     | Windows       | Linux         | MacOS         |
+| ------------------- | ------------- | ------------- | ------------- |
+| `time.monotonic`    | 6811 👀       | 1,000,000,000 | 1,000,000,000 |
+| `time.perf_counter` | 1,000,000,000 | 1,000,000,000 | 1,000,000,000 |
 
 ---
 
@@ -54,17 +54,17 @@ Test: Loop with 1,000,000,000 cycles, number of changes of returned value.
 
 `timeit`, 5,000,000 loops, best of 5.
 
-|                     | Windows   | Linux     |
-| ------------------- | --------- | --------- |
+|                     | Windows      | Linux     |
+| ------------------- | ------------ | --------- |
 | `time.monotonic`    | 54.2 nsec 👀 | 74 nsec   |
-| `time.perf_counter` | 84.1 nsec | 73.3 nsec |
+| `time.perf_counter` | 84.1 nsec    | 73.3 nsec |
 
 ---
 
 # Summary
 
   1. `time.monotonic` and `time.perf_counter` are both monotonic.
-  2. Under Windows, `time.monotonic` has lower resolution and higher performance than `time.perf_counter`. Under Linux they are identical.
+  2. Under Windows, `time.monotonic` has lower resolution and higher performance than `time.perf_counter`. Under Linux and Mac they are identical.
 
 # Links
 
